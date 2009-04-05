@@ -1,0 +1,46 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#top {
+	margin-bottom: 5px;
+	padding: 5px;
+	background-color: #EEE;
+}
+
+#desktop {
+	/*border: 1px solid;*/
+}
+
+#projects {
+	width: 280px;
+	height: 400px;
+	min-height: 400px;
+	margin-left: 5px;
+	display: table;
+	float: left;
+	border: 1px solid #DDD;
+}
+
+.title {
+	background-color: #666;
+	text-align: center;
+	font-weight: bold;
+	color: #FFF;
+	padding: 3px;
+}
+
+#menu {
+	margin: 5px;
+}
+
+.sky_form {
+	
+}
+.sky_form th {
+	text-align: right;
+	padding: 3px;
+	vertical-align: top;
+}
