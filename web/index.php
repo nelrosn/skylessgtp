@@ -1,5 +1,5 @@
 ﻿<?php
-
+// isto é um teste de alteração
 	require_once("model/gem/vo/Sky_stakeholderVO.php");
 	session_start();
 ?>
@@ -24,6 +24,7 @@
 		</div>
 		<div id="content">
 			<?php
+				//odyp dçfgsdçg idyo iesto isto é um teste
 				$user = unserialize($_SESSION["user"]);
 				if(!$user) {
 					require_once("view/login.form.php");
