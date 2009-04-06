@@ -1,5 +1,7 @@
-﻿<?php
+<?php
 // isto é um teste de alteração
+// mais um teste de alteração, por gil,
+
 	require_once("model/gem/vo/Sky_stakeholderVO.php");
 	session_start();
 ?>
