@@ -4,7 +4,7 @@
 	
 	//recebe dados passados pelo formulário
 	$name		 = $_POST["fldName"];
-	$client		 = $_POST["fldClient"];
+	$client		 = $_POST["fldClient"] > 0 ? $_POST["fldClient"] : NULL;
 	$start		 = urldecode($_POST["fldStart"]);
 	$end		 = urldecode($_POST["fldEnd"]);
 	$objectives  = $_POST["fldObjectives"];
