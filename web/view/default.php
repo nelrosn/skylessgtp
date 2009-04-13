@@ -15,12 +15,13 @@
 			?>
 		</div>
 	</div>
-	<div id="internal">
-		<?php
-			$page = $_SESSION["accessPage"]["#internal"];
-			if($page) {
-				require_once($page);
-			}
-		?>
-	</div>
+	<div id="internal"></div>
 </div>
+<?php
+	$page = $_SESSION["accessPage"]["#internal"];
+	if($page):
+?>
+<script type="text/javascript">
+	app.openPage( "<?php echo $page; ?>", "#internal" );
+</script>
+<?php endif; ?>

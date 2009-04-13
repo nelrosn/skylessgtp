@@ -1,5 +1,6 @@
 <?php
-	$includeFile = "model/business/CustomApplicationService.php";
+	//****************************** CONTROLE DE PERMISSÕES DESABILITADO ***************************************//
+	/*$includeFile = "model/business/CustomApplicationService.php";
 	if(!file_exists($includeFile)) {
 		$includeFile = "../model/business/CustomApplicationService.php";
 	}
@@ -26,9 +27,11 @@
 	$userPermission = $userSession ? $userSession->sky_responsibility_id : NULL;
 	
 	//verifica permissões para a página acessada
+	
+	
 	if(!isset($notRedirect) && (is_null($userPermission) || !in_array("{$host}{$page}", $hasPermission[$userPermission]))) {
 		$_SESSION["accessPage"][$target] = "{$host}{$accessDeniedPage}";
 		header("Location: {$host}{$accessDeniedPage}");
 		exit;
-	}
+	}*/
 ?>

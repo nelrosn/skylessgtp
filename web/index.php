@@ -1,8 +1,4 @@
 <?php
-// isto é um teste de alteração
-// mais um teste de alteração, por gil,
-// mais um, pessoal
-
 	require_once("model/gem/vo/Sky_stakeholderVO.php");
 	session_start();
 ?>
@@ -16,6 +12,7 @@
 		<script type="text/javascript" charset="UTF-8" src="javascript/library/others/urlmanipulation.js"></script>
 		<script type="text/javascript" charset="UTF-8" src="javascript/library/Application.js"></script>
 		<script type="text/javascript">
+			//Objeto javascript para tratamento das interações do lado cliente
 			var app = new Application();
 		</script>
 		
@@ -27,7 +24,7 @@
 		</div>
 		<div id="content">
 			<?php
-				//odyp dçfgsdçg idyo iesto isto é um teste
+				//recupera usuário da sessão
 				$user = unserialize($_SESSION["user"]);
 				if(!$user) {
 					require_once("view/login.form.php");
