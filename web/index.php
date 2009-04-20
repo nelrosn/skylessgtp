@@ -10,6 +10,8 @@
 		
 		<script type="text/javascript" charset="UTF-8" src="javascript/jquery/jquery-1.3.2.js"></script>
 		<script type="text/javascript" charset="UTF-8" src="javascript/library/others/urlmanipulation.js"></script>
+		<!-- deve ser carregado antes de Application -->
+		<script type="text/javascript" charset="UTF-8" src="javascript/library/ApplicationMessages.js"></script>
 		<script type="text/javascript" charset="UTF-8" src="javascript/library/Application.js"></script>
 		<script type="text/javascript">
 			//Objeto javascript para tratamento das interações do lado cliente

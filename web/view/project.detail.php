@@ -24,23 +24,28 @@
 <br />
 <div id="dataProject">
 	<label>Nome: </label>
-	<?php echo utf8_encode($project->sky_name); ?><br />
+	<span id="nameField"><?php echo utf8_encode($project->sky_name); ?><br /></span>
 	<label>Cliente: </label>
+	<span id="clientField">
 	<?php echo utf8_encode(!is_null($client) ? $client->sky_name : "Nenhum"); ?><br />
+	</span>
 	<label>Início: </label>
-	<?php
+	<span id="dateStartField"><?php
 		$dateStart = new DateTime($project->sky_start);
 		echo $dateStart->format("d/m/Y");
-	?><br />
+	?></span>
+	<br />
 	<label>Fim: </label>
-	<?php
+	<span id="dateEndField"><?php
 		$dateEnd = new DateTime($project->sky_end);
 		echo $dateEnd->format("d/m/Y");
-	?><br /><br />
+	?></span>
+	<br /><br />
 	<label>Objetivos: </label><br />
-	<?php echo utf8_encode($project->sky_objectives); ?><br /><br />
+	<span id="objectiveField"><?php echo utf8_encode($project->sky_objectives); ?></span>
+	<br /><br />
 	<label>Detalhes: </label><br />
-	<?php echo utf8_encode($project->sky_description); ?><br />
+	<span id="detailsField"><?php echo utf8_encode($project->sky_description); ?></span><br />
 </div>
 <script type="text/javascript">
 	$("#ui-datepicker-div").remove()
