@@ -21,15 +21,17 @@ FieldText.prototype = new FieldCommons();
 FieldText.prototype.type = Field.TEXT;
 
 /**
- * @private
  * Método que cria o conteúdo do HTML do tipo texto de edição do campo.
  */
-FieldText.prototype._contentType = function FieldText__contentType(){
-	var content = document.createElement( "input" );
-	$( content ).attr( "type", Field.TEXT );
-	$( content ).attr( "value", this.value );
+FieldText.prototype.contentType = function FieldText_contentType(){
+	if( !this._contentType ){
+		this._contentType = document.createElement( "input" );
+		$( this._contentType ).attr( "type", Field.TEXT );
+		$( this._contentType ).attr( "value", this.value );
+	}
 	
-	return content;
+	return this._contentType;
+	
 }
 
 /**
@@ -45,6 +47,11 @@ FieldText.prototype._create = function FieldText__create(){
 	
 	$( this.containerLabel ).attr("id", this._labelId);
 	$( this.containerValue ).attr("id", this._valueId);
+
+	
+	$( this.containerValue ).css( "border", "1px solid black" );
+	$( this.containerValue ).css( "width",  "146" );
+	
 	
 	$( this.containerLabel ).append( document.createTextNode( this.name ) );
 	$( this.containerValue ).append( document.createTextNode( this.value ) );

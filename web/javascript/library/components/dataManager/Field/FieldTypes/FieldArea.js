@@ -11,7 +11,7 @@ function FieldArea( name, value ){
 }
 
 /**
- * FieldDate herda as propriedades da classe FieldCommons.
+ * FieldArea herda as propriedades da classe FieldCommons.
  */
 FieldArea.prototype = new FieldCommons();
 
@@ -21,13 +21,26 @@ FieldArea.prototype = new FieldCommons();
 FieldArea.prototype.type = Field.TEXTAREA;
 
 /**
- * @private
+ * Largura de FieldArea.
+ */
+FieldArea.prototype.contentWidth = 300;
+
+/**
+ * Altura de FieldArea.
+ */
+FieldArea.prototype.contentHeight = 75;
+
+/**
  * Método que cria o conteúdo do HTML do tipo textarea de edição do campo.
  */
-FieldArea.prototype._contentType = function FieldArea__contentType(){
-	var content = document.createElement(Field.TEXTAREA);
-	$(content).append(document.createTextNode(this.value));
-	return content;
+FieldArea.prototype.contentType = function FieldArea_contentType(){
+	if( !this._contentType ){
+		this._contentType = document.createElement(Field.TEXTAREA);
+		$( this._contentType ).css( "width", this.contentWidth.toString() );
+		$( this._contentType ).css( "height", this.contentHeight.toString() );
+		$( this._contentType ).append(document.createTextNode( this.value ) );
+	}
+	return this._contentType;
 }
 
 /**
@@ -43,6 +56,9 @@ FieldArea.prototype._create = function FieldArea__create(){
 	
 	$( this.containerLabel ).attr("id", this._labelId);
 	$( this.containerValue ).attr("id", this._valueId);
+	$( this.containerValue ).css( "width", this.contentWidth );
+	$( this.containerValue ).css( "heigth", this.contentHeight );
+	$( this.containerValue ).css( "border", "1px solid black" );
 	
 	$( this.containerLabel ).append( document.createTextNode( this.name ) );
 	$( this.containerValue ).append( document.createTextNode( this.value ) );

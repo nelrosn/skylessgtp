@@ -1,6 +1,6 @@
 /**
  * @author luiz filipe
- * Classe estática que contem os typos e as definições dos campos.
+ * Classe estática que contem os tipos e as definições dos campos.
  */
 Field = new Object();
 

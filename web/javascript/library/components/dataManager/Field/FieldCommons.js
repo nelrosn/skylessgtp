@@ -34,7 +34,7 @@ FieldCommons.prototype.containerValue = null;
 FieldCommons.prototype.type = null;
 
 /**
- * Nome/ label do Field.
+ * Nome/Label do Field.
  */
 FieldCommons.prototype.name = null;
 
@@ -42,6 +42,11 @@ FieldCommons.prototype.name = null;
  * Valor/Dado armazenado no campo.
  */
 FieldCommons.prototype.value = null;
+
+/**
+ * Elemento HTML utilizado para edição e selecção da informação.
+ */
+FieldCommons.prototype._contentType = null;
 
 
 /**
@@ -67,7 +72,6 @@ FieldCommons.prototype.showIn = function(target) {
 }
 
 /**
- * @private
  * Função disparada para alternar a visão dos componentes
  * Evento a ser disparado para os seguintes tipos do componente Field abaixo:
  * Text
@@ -77,16 +81,59 @@ FieldCommons.prototype.showIn = function(target) {
 FieldCommons.prototype._eventTextDateComponent = function FieldCommons__eventTextDateComponent(){
 	var divElement = this;
 	var field = divElement.parent;
-	var inputElement = field._contentType();
+	var inputElement = field.contentType();
 	var typeEventChangeData = ( field.type === Field.DATE ) ? "change" : "blur";
-	$( divElement ).unbind( "click" );
+	//em uma análise profunda o  elemento div não deve perder seu evento de click.
+	//$( divElement ).unbind( "click" );
 	$( inputElement ).bind( typeEventChangeData, function(){
-		$( divElement ).bind( "click",  field._eventTextDateComponent );
+		//$( divElement ).bind( "click",  field._eventTextDateComponent );
 		$( inputElement ).attr( "value", this.value );
 		field.value = this.value;
 		$( divElement ).html( document.createTextNode( this.value ) );
 	});
 
 	$( divElement ).html( inputElement );
+	$( inputElement ).focus();
+}
+
+/**
+ * Função disparada para alternar a visão dos componentes
+ * Evento a ser disparado para o seguinte tipo de componente Field abaixo:
+ * Password
+ */
+FieldCommons.prototype._eventPasswordComponent = function FieldCommons__eventPasswordComponent(){
+	var divElement = this;
+	var field = divElement.parent;
+	var inputElement = field.contentType();
+	var resultString = "";
+	$( inputElement ).bind( "blur", function(){
+		$( inputElement ).attr( "value", this.value );
+		field.value = this.value;
+		for( var i = 0 ; i < field.value.length; i++ ){
+			resultString += "*"
+		}
+		$( divElement ).html( document.createTextNode( resultString ) );
+	});
+
+	$( divElement ).html( inputElement );
+	$( inputElement ).focus();
+}
+
+/**
+ * Função disparada para alternar a visão dos componentes
+ * Evento a ser disparado para o seguinte tipo de componente Field abaixo:
+ * Select
+ */
+FieldCommons.prototype._eventSelectComponent = function FieldCommons__eventSelectComponent(){
+	var divElement = this;
+	var field  = divElement.parent;
+	var inputElement = field.contentType();
+	$( inputElement ).bind( "change", function(){
+		$( divElement ).html( document.createTextNode( this.value ) );
+		
+	} )
+	
+	$( divElement ).html( inputElement );
+	$( divElement ).append( field.selectBox.containerBox );
 	$( inputElement ).focus();
 }
