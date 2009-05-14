@@ -11,9 +11,10 @@ FieldFactory.prototype = Field;
  * @param {Object} name - titulo do label, representa o contexto ddo valor que o Field irá conter
  * @param {Object} value - valor do campo, dado que irá ser manipulado pelo Field.
  * @param {Object} type - tipo de campo, abstração dos principais componentes HTML usados para manipulação de dados.
+ * @param {object} options - somente utilizado para fields do tipo select e radio.
  * @return retorna um tipo de Field html.
  */
-FieldFactory.createField = function FieldFactory_createField( name, value, type ){
+FieldFactory.createField = function FieldFactory_createField( name, value, type, options ){
 	var field;
 	switch( type ){
 		case Field.TEXT:
@@ -24,6 +25,12 @@ FieldFactory.createField = function FieldFactory_createField( name, value, type 
 		break;
 		case Field.AREA:
 			field = new FieldArea( name, value );
+		break;
+		case Field.PASSWORD:
+			field = new FieldPassword( name, value );
+		break;
+		case Field.SELECT:
+			field = new FieldSelect ( name, value, options );
 		break;
 	}
 	return field;

@@ -1,37 +1,33 @@
 /**
  * @author luiz filipe
- * Classe de representação de um componente Field do tipo date. 
+ * Classe de representação de um componente Field do tipo password. 
  * O componente HTML input é usado para gerar essa representação.
- * O componente datepicker do jQuery é usado para gerar a escolha do conteúdo.
  */
-function FieldDate( name, value ){
+function FieldPassword( name, value ){	
 	this.name = name;
 	this.value = value;
 	
-	this._create();	
+	this._create();
 }
 
 /**
- * FieldDate herda as propriedades da classe FieldCommons.
+ * FieldPassword herda as propriedades da classe FieldCommons.
  */
-FieldDate.prototype = new FieldCommons();
+FieldPassword.prototype = new FieldCommons();
 
 /**
- * Tipo de FieldText. 
+ * Tipo de FieldPassword. 
  */
-FieldDate.prototype.type = Field.DATE;
-
+FieldPassword.prototype.type = Field.PASSWORD;
 
 /**
- * Método que cria o conteúdo do HTML do tipo date de edição do campo.
+ * Método que cria o conteúdo do HTML do tipo texto de edição do campo.
  */
-FieldDate.prototype.contentType = function FieldDate__contentType(){
+FieldPassword.prototype.contentType = function FieldPassword_contentType(){
 	if( !this._contentType ){
 		this._contentType = document.createElement( "input" );
-		$( this._contentType ).attr( "type", Field.TEXT );
+		$( this._contentType ).attr( "type", Field.PASSWORD );
 		$( this._contentType ).attr( "value", this.value );
-		$( this._contentType ).datepicker();
-		$( this._contentType ).datepicker( "option", { dateFormat: "dd/mm/yy" });	
 	}
 	return this._contentType;
 }
@@ -40,7 +36,7 @@ FieldDate.prototype.contentType = function FieldDate__contentType(){
  * @private
  * Método que cria o componente Field.
  */
-FieldDate.prototype._create = function FieldDate__create(){
+FieldPassword.prototype._create = function FieldPassword__create(){
 	this.containerLabel = document.createElement( "label" );
 	this.containerValue = document.createElement( "div" );
 	
@@ -49,12 +45,14 @@ FieldDate.prototype._create = function FieldDate__create(){
 	
 	$( this.containerLabel ).attr("id", this._labelId);
 	$( this.containerValue ).attr("id", this._valueId);
+
+	
+	$( this.containerValue ).css( "border", "1px solid black" );
 	$( this.containerValue ).css( "width",  "146" );
-	$( this.containerValue ).css( "heigth",  "15" );
 	
 	
 	$( this.containerLabel ).append( document.createTextNode( this.name ) );
 	$( this.containerValue ).append( document.createTextNode( this.value ) );
 	
-	$( this.containerValue ).click( this._eventTextDateComponent );
+	$( this.containerValue ).click( this._eventPasswordComponent );
 }
